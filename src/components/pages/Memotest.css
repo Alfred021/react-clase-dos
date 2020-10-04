@@ -1,0 +1,81 @@
+.card {
+    width: 90px;
+    height: 90px;
+    margin: 6px;
+    background-color: beige;
+}
+
+.tictactoe-row {
+    display: flex;
+  }
+  
+.show-board {
+    display: none;
+}
+
+.inner-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.front-card, .back-card {
+    position: absolute;
+    width: 100%; 
+    height: 100%;
+    visibility: visible;
+}
+
+.front-card {
+    background-color: white;
+    color: black;
+}
+
+.back-card {
+    transform: rotateY(180deg);
+}
+
+.card-face-up .inner-card {
+    transform: rotateY(180deg);
+}
+
+.card-clear {
+    opacity: 10%;
+    transition: opacity 0.3s;
+}
+
+.red .back-card {  
+    background-color: red;
+}
+
+.blue .back-card {
+    background-color: blue;
+}
+
+.cyan .back-card {
+    background-color: cyan;
+}
+
+.violet .back-card {
+    background-color: violet;
+}
+
+.green .back-card {
+    background-color: green;
+}
+
+.rose .back-card {
+    background-color: rosybrown;
+}
+
+.black .back-card {
+    background-color: black;
+}
+
+.fuchsia .back-card {
+    background-color: fuchsia;
+}
+
