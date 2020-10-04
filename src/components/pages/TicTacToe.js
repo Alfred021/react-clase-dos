@@ -54,46 +54,46 @@ WinnerCard.propTypes = {
   onRestart: PropTypes.func,
 };
 
+const getVerticalWin = (tiles, player) => {
+  for (let columnIndex = 0; columnIndex < 3; columnIndex++) {
+    if (
+      tiles[columnIndex] === player && tiles[columnIndex + 3] === player && tiles[columnIndex + 6] === player
+    ) {
+      return true;
+    }
+  }
+}
+
+const getHorizontalWin = (tiles, player) => {
+  for (let rowIndex = 0; rowIndex < 7; rowIndex += 3) {
+    if (
+      tiles[rowIndex] === player && tiles[rowIndex + 1] === player && tiles[rowIndex + 2] === player
+    ) {
+      return true;
+    }
+  }
+}
+
+const getDiagonalWin = (tiles, player) => {
+  if (tiles[4] === player) {
+    if (
+      tiles[0] === player && tiles[8] === player
+    ) {
+      return true;
+    }
+    if (
+      tiles[2] === player && tiles[6] === player
+    ) {
+      return true;
+    }
+  }
+}
+
 const getWinner = (tiles, player) => {
   // calcular el ganador del partido a partir del estado del tablero
   // (existen varias formas de calcular esto, una posible es listar todos los
   // casos en los que un jugador gana y ver si alguno sucede)
   const posibleWinner = player === 'X' ? 'O' : 'X';
-
-  const getVerticalWin = (tiles, player) => {
-    for (let columnIndex = 0; columnIndex < 3; columnIndex++) {
-      if (
-        tiles[columnIndex] === player && tiles[columnIndex + 3] === player && tiles[columnIndex + 6] === player
-      ) {
-        return true;
-      }
-    }
-  }
-
-  const getHorizontalWin = (tiles, player) => {
-    for (let rowIndex = 0; rowIndex < 7; rowIndex += 3) {
-      if (
-        tiles[rowIndex] === player && tiles[rowIndex + 1] === player && tiles[rowIndex + 2] === player
-      ) {
-        return true;
-      }
-    }
-  }
-  
-  const getDiagonalWin = (tiles, player) => {
-    if (tiles[4] === player) {
-      if (
-        tiles[0] === player && tiles[8] === player
-      ) {
-        return true;
-      }
-      if (
-        tiles[2] === player && tiles[6] === player
-      ) {
-        return true;
-      }
-    }
-  }
 
   if (getVerticalWin(tiles, posibleWinner)) {
     return posibleWinner;
